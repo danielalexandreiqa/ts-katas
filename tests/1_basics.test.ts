@@ -73,8 +73,8 @@ describe('replaceText', () => {
     expect(replaceText('My name is John.', 'My name is', "He's called")).toBe(
       "He's called John."
     )
-    expect(replaceText('Cool. Cool, cool, cool, cool.', 'cool', 'nice')).toBe(
-      'Nice. Nice, nice, nice, nice.'
+    expect(replaceText('COOL. Cool, coOl, cooL, cool.', 'cool', 'nice')).toBe(
+      'nice. nice, nice, nice, nice.'
     )
   })
 })
@@ -104,7 +104,7 @@ describe('sumOfArray', () => {
     expect(sumOfArray([1, 2, 3, 4])).toBe(10)
     expect(sumOfArray([1, 2])).toBe(3)
     expect(sumOfArray([0, 0, 0, 1, 0])).toBe(1)
-    expect(sumOfArray([1, 0, 1, 0, 7, 5, 4, 19])).toBe(36)
+    expect(sumOfArray([1, 0, 1, 0, 7, 5, 4, 19])).toBe(37)
   })
 })
 
@@ -112,16 +112,16 @@ describe('averageUp', () => {
   test('returns the average of the numbers of an array, rounded up', () => {
     expect(averageUp([1, 2, 3, 4])).toBe(3)
     expect(averageUp([0, 1, 1, 0])).toBe(1)
-    expect(averageUp([20, 5, 100, 17, 34, 89, 25, 12])).toBe(76)
+    expect(averageUp([20, 5, 100, 17, 34, 89, 25, 12])).toBe(38)
   })
 })
 
 describe('minMax', () => {
   test('returns an array [min, max] with the minimum and maximum numbers of an array', () => {
-    expect(minMax([1, 2, 3, 4])).toBe([1, 4])
-    expect(minMax([1, 2, 4, 3])).toBe([1, 4])
-    expect(minMax([5, 3, 0, 9, 3])).toBe([0, 9])
-    expect(minMax([1, -4, -5, 10])).toBe([-5, 10])
+    expect(minMax([1, 2, 3, 4])).toStrictEqual([1, 4])
+    expect(minMax([1, 2, 4, 3])).toStrictEqual([1, 4])
+    expect(minMax([5, 3, 0, 9, 3])).toStrictEqual([0, 9])
+    expect(minMax([1, -4, -5, 10])).toStrictEqual([-5, 10])
   })
 })
 
@@ -190,31 +190,31 @@ describe('totalPrice', () => {
       Laptop: 1500,
       TV: 1000
     }
-    expect(totalPrice(products1, [{ product: 'Table', total: 1 }])).toBe(50)
+    expect(totalPrice(products1, [{ product: 'Table', quantity: 1 }])).toBe(50)
     expect(
       totalPrice(products1, [
-        { product: 'Painting', total: 4 },
-        { product: 'Chair', total: 1 }
+        { product: 'Painting', quantity: 4 },
+        { product: 'Chair', quantity: 1 }
       ])
     ).toBe(90)
     expect(
       totalPrice(products1, [
-        { product: 'Chair', total: 4 },
-        { product: 'Table', total: 1 },
-        { product: 'Painting', total: 3 }
+        { product: 'Chair', quantity: 4 },
+        { product: 'Table', quantity: 1 },
+        { product: 'Painting', quantity: 3 }
       ])
-    ).toBe(140)
+    ).toBe(150)
     expect(
       totalPrice(products2, [
-        { product: 'Phone', total: 2 },
-        { product: 'Laptop', total: 1 }
+        { product: 'Phone', quantity: 2 },
+        { product: 'Laptop', quantity: 1 }
       ])
     ).toBe(2500)
     expect(
       totalPrice(products2, [
-        { product: 'Laptop', total: 5 },
-        { product: 'Phone', total: 5 },
-        { product: 'TV', total: 2 }
+        { product: 'Laptop', quantity: 5 },
+        { product: 'Phone', quantity: 5 },
+        { product: 'TV', quantity: 2 }
       ])
     ).toBe(12000)
   })
